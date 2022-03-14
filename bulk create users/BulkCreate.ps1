@@ -1,6 +1,6 @@
 #bulk create users from a .csv file
 
-#you will need the csv file named bulk_create_users.csv
+#you will need the csv file named bulk_create_users.csv in the PowerShell Wiki
 #only 5 fields are actually required
 #1)firstname
 #2)lastname
