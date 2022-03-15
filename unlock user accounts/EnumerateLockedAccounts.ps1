@@ -1,0 +1,1 @@
+Search-AdAccount -LockedOut | ft name
