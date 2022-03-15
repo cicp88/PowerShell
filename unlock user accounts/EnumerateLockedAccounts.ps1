@@ -1,1 +1,3 @@
-Search-AdAccount -LockedOut | ft name
+#sShow locked accounts
+
+Search-AdAccount -LockedOut | Format-Table SamAccountName
