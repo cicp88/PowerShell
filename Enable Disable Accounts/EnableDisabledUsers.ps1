@@ -1,4 +1,4 @@
-#Enable deactivated Users without enabling the guest, defaultaccount, or krbtgt accounts
+#Enable disabled Users without enabling the guest, defaultaccount, or krbtgt accounts
 #this is assuming the guest, defaultaccount, and krbtgt accounts are in the Users container
 
 Get-ADUser -Filter {(enabled -eq $false)} | 
