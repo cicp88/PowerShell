@@ -7,7 +7,7 @@
     
  Search-ADAccount -UsersOnly -AccountInactive -TimeSpan 60:00:00:00 |
      ForEach-Object{
-         if ( ($_.distinguishedName -match '(?=OU=|DC=)(.*\n?)(?<=.)') -and ($exclued -contains $matches[1])){
+         if ( ($_.distinguishedName -match '(?=OU=|DC=|CN=)(.*\n?)(?<=.)') -and ($exclued -contains $matches[1])){
              "Excluded $($_.Name)"
          }
          else{
