@@ -8,12 +8,14 @@
 #4)password
 #5)ou
 
+#modify line 58 to match your organization
+
 # Import active directory module for running AD cmdlets
 Import-Module activedirectory
   
 #Store the data from ADUsers.csv in the $ADUsers variable
-$ADUsers = Import-csv E:\Bulk_users\bulk_users1.csv #modify this section to match where you
-                                                    #saved the .csv file
+$ADUsers = Import-csv E:\Bulk_users\bulk_create_users.csv #modify this section to match where you
+                                                          #saved the .csv file
 
 #Loop through each row containing user details in the CSV file 
 foreach ($User in $ADUsers)
@@ -33,7 +35,6 @@ foreach ($User in $ADUsers)
     $city       = $User.city
     $zipcode    = $User.zipcode
     $state      = $User.state
-    $country    = $User.country
     $telephone  = $User.telephone
     $jobtitle   = $User.jobtitle
     $company    = $User.company
@@ -54,7 +55,7 @@ foreach ($User in $ADUsers)
         #Account will be created in the OU provided by the $OU variable read from the CSV file
 		New-ADUser `
             -SamAccountName $Username `
-            -UserPrincipalName "$Username@adatum.com" ` #modify to match domain
+            -UserPrincipalName "$Username@adatum.com" `
             -Name "$Firstname $Lastname" `
             -GivenName $Firstname `
             -Surname $Lastname `
@@ -62,6 +63,7 @@ foreach ($User in $ADUsers)
             -DisplayName "$Lastname, $Firstname" `
             -Path $OU `
             -City $city `
+            -PostalCode $zipcode `
             -Company $company `
             -State $state `
             -StreetAddress $streetaddress `
